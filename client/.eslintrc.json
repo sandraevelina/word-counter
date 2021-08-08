@@ -19,6 +19,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
+
   "plugins": ["react", "prettier", "cypress"],
   "rules": {
     "prettier/prettier": "error",
