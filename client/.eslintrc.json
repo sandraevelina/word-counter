@@ -1,12 +1,13 @@
 {
   "env": {
+    "cypress/globals": true,
     "browser": true,
     "es2021": true
   },
   "parser": "babel-eslint",
   "extends": [
     "plugin:react/recommended",
-    "plugin:testing-library/react",
+    "plugin:cypress/recommended",
     "airbnb",
     "prettier",
     "stylelint"
@@ -18,27 +19,28 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "testing-library"],
+
+  "plugins": ["react", "prettier", "cypress"],
   "rules": {
     "prettier/prettier": "error",
-    "testing-library/await-async-query": "error",
-    "testing-library/no-await-sync-query": "error",
-    "testing-library/no-debug": "warn",
-    "testing-library/no-dom-import": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "node/no-unsupported-features/es-syntax": ["error", { "ignores": ["modules"] }],
     "node/no-missing-import": [
       "error",
       {
         "tryExtensions": [".js", ".jsx", ".json", ".node"]
       }
+    ],
+    "jest/expect-expect": [
+      "error",
+      {
+        "assertFunctionNames": ["expect", "cy.**.should"]
+      }
     ]
   },
-  "overrides": [
-    {
-      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      "env": {
-        "jest": true
-      }
+  "settings": {
+    "jest": {
+      "version": 26
     }
-  ]
+  }
 }
