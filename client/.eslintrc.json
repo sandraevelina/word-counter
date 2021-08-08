@@ -7,7 +7,6 @@
   "parser": "babel-eslint",
   "extends": [
     "plugin:react/recommended",
-    "plugin:testing-library/react",
     "plugin:cypress/recommended",
     "airbnb",
     "prettier",
@@ -20,19 +19,24 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "cypress", "jest"],
+  "plugins": ["react", "prettier", "cypress"],
   "rules": {
     "prettier/prettier": "error",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-  },
-  "overrides": [
-    {
-      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(test).[jt]s?(x)"],
-      "env": {
-        "jest": true
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "node/no-unsupported-features/es-syntax": ["error", { "ignores": ["modules"] }],
+    "node/no-missing-import": [
+      "error",
+      {
+        "tryExtensions": [".js", ".jsx", ".json", ".node"]
       }
-    }
-  ],
+    ],
+    "jest/expect-expect": [
+      "error",
+      {
+        "assertFunctionNames": ["expect", "cy.**.should"]
+      }
+    ]
+  },
   "settings": {
     "jest": {
       "version": 26
