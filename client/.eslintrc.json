@@ -1,42 +1,41 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "cypress/globals": true,
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:testing-library/react",
+    "plugin:cypress/recommended",
+    "airbnb",
+    "prettier",
+    "stylelint"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "parser": "babel-eslint",
-    "extends": [
-        "plugin:react/recommended",
-        "plugin:testing-library/react",
-        "airbnb",
-        "prettier",
-        "stylelint"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "prettier",
-        "testing-library"
-    ],
-    "rules": {
-        "prettier/prettier": "error",
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "testing-library/await-async-query": "error",
-        "testing-library/no-await-sync-query": "error",
-        "testing-library/no-debug": "warn",
-        "testing-library/no-dom-import": "off"
-    },
-    "overrides": [
-        {
-            "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-            "env": {
-              "jest": true
-            }
-        }
-    ]
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier", "cypress", "jest"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(test).[jt]s?(x)"],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
+  "settings": {
+    "jest": {
+      "version": 26
+    }
+  }
 }
