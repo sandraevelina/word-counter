@@ -1,16 +1,15 @@
 {
   "env": {
-    "cypress/globals": true,
     "browser": true,
     "es2021": true
   },
   "parser": "babel-eslint",
   "extends": [
     "plugin:react/recommended",
-    "plugin:cypress/recommended",
     "airbnb",
     "prettier",
-    "stylelint"
+    "stylelint",
+    "plugin:playwright/jest-playwright"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -19,8 +18,7 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-
-  "plugins": ["react", "prettier", "cypress"],
+  "plugins": ["react", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -29,12 +27,6 @@
       "error",
       {
         "tryExtensions": [".js", ".jsx", ".json", ".node"]
-      }
-    ],
-    "jest/expect-expect": [
-      "error",
-      {
-        "assertFunctionNames": ["expect", "cy.**.should"]
       }
     ]
   },
