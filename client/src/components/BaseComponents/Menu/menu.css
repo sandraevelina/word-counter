@@ -1,0 +1,28 @@
+.menu-container {
+  width: 300px;
+  height: calc(100vh - var(--space-xxl));
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  color: var(--on-primary);
+  overflow: hidden;
+  transition: all 1.5s;
+}
+
+.menu-container.hidden {
+  transform: translateX(-300px);
+}
+
+.menu-item {
+  color: var(--on-primary);
+  text-decoration: none;
+  padding: var(--space-m);
+}
+
+.menu-item:hover {
+  background: var(--hover-on-primary);
+}
+
+.menu-item.active {
+  background: var(--secondary);
+}

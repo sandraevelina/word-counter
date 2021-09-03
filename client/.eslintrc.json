@@ -28,7 +28,8 @@
       {
         "tryExtensions": [".js", ".jsx", ".json", ".node"]
       }
-    ]
+    ],
+    "no-console": "off"
   },
   "settings": {
     "jest": {

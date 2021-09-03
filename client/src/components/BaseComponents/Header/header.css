@@ -1,0 +1,10 @@
+.header {
+  width: calc(100vw - var(--space-m));
+  height: var(--space-xxl);
+  background: var(--primary-variant);
+  color: var(--on-primary);
+  padding-left: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
