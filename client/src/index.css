@@ -6,6 +6,7 @@
   --secondary: hsl(185, 100%, 28%);
   --on-primary: hsl(0, 0%, 100%);
   --hover-on-primary: hsl(0, 0%, 24%);
+  --color-lines: hsl(0, 0%, 62%);
 
   /* Spaces */
   --space-xs: 0.25rem; /* 4px */

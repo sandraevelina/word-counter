@@ -6,4 +6,5 @@
 
 main {
   margin: var(--space-m);
+  width: 100%;
 }

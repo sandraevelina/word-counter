@@ -14,3 +14,7 @@
 .box-main {
   margin: var(--space-s) var(--space-xs);
 }
+
+.box-main > * {
+  margin-bottom: var(--space-m);
+}

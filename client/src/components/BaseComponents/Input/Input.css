@@ -1,0 +1,22 @@
+label {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spaces-s);
+  color: var(--on-primary);
+}
+
+input {
+  font-size: var(--font-s);
+  color: var(--on-primary);
+  background: transparent;
+  padding: var(--space-s);
+  margin-top: var(--space-xs);
+  border: none;
+  border-bottom: 2px solid var(--color-lines);
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--secondary);
+}
