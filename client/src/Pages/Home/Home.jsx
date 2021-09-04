@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '../../components/BaseComponents/Box/Box';
 import NumberInput from '../../components/BaseComponents/Input/NumberInput';
 import Switch from '../../components/BaseComponents/Switch/Switch';
 import './home.css';
+import {
+  addition,
+  getCourtage,
+  getProfitBaseCurrency,
+  getSellPoint,
+  getTotalPrice,
+  getUSDCurrencyCourtage,
+} from '../../lib/utils';
 
 const Home = () => {
   const [price, setPrice] = useState(10);
@@ -13,6 +21,22 @@ const Home = () => {
   const [courtage, setCourtage] = useState(0);
   const [currencyCourtage, setCurencyCourtage] = useState(0);
   const [sellAt, setSellAt] = useState(0);
+  const [profitSEK, setProfitSEK] = useState(0);
+
+  useEffect(() => {
+    const boughtAt = getTotalPrice(price, amount);
+    const soldAt = getTotalPrice(sellAt, amount);
+
+    setCourtage(getCourtage(boughtAt, soldAt));
+    setCurencyCourtage(getUSDCurrencyCourtage(boughtAt, soldAt));
+  }, [price, amount, sellAt]);
+
+  useEffect(() => {
+    const totCourtage = usMarket ? addition([courtage, currencyCourtage]) : courtage;
+
+    setSellAt(getSellPoint(price, amount, profit, totCourtage));
+    setProfitSEK(getProfitBaseCurrency(profit, currency));
+  });
 
   return (
     <Box label="Quick test">
@@ -31,7 +55,7 @@ const Home = () => {
       />
       <NumberInput
         identifier="profit"
-        label="Profit (SEK)"
+        label="Profit"
         value={profit}
         handleChange={(value) => setProfit(value)}
       />
@@ -41,14 +65,7 @@ const Home = () => {
         value={usMarket}
         handleChange={() => setUSMarket(!usMarket)}
       />
-      {usMarket && (
-        <NumberInput
-          identifier="currency"
-          label="Currency exchange"
-          value={currency}
-          handleChange={(value) => setCurrency(value)}
-        />
-      )}
+
       <NumberInput
         identifier="courtage"
         label="Courtage"
@@ -69,6 +86,22 @@ const Home = () => {
         value={sellAt}
         handleChange={(value) => setSellAt(value)}
       />
+      {usMarket && (
+        <NumberInput
+          identifier="currency"
+          label="Currency exchange"
+          value={currency}
+          handleChange={(value) => setCurrency(value)}
+        />
+      )}
+      {usMarket && (
+        <NumberInput
+          identifier="profit-sek"
+          label="Profit (SEK)"
+          value={profitSEK}
+          handleChange={(value) => setProfitSEK(value)}
+        />
+      )}
     </Box>
   );
 };
