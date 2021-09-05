@@ -1,5 +1,4 @@
 module.exports = {
-  preset: 'jest-playwright-preset',
-  testPathIgnorePatterns: ['/node_modules/', 'lib'],
-  testMatch: ['**/e2e/*.test.js', '**/src/**/*.test.js'],
+  testPathIgnorePatterns: ['/node_modules/'],
+  testMatch: ['**/src/**/*.test.js'],
 };
