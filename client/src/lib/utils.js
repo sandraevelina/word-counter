@@ -14,7 +14,7 @@ export const getCourtage = (boughtAt, soldAt) => {
     return minCourtage;
   }
 
-  return courtage.toPrecision(2);
+  return parseFloat(courtage.toFixed(2));
 };
 
 /**
@@ -28,7 +28,7 @@ export const getUSDCurrencyCourtage = (boughtAt, soldAt) => {
   const valueToCalculate = Math.max(boughtAt || 0, soldAt || 0);
   const courtage = valueToCalculate * percentageCourtage;
 
-  return courtage.toPrecision(2);
+  return parseFloat(courtage.toFixed(2));
 };
 
 /**
@@ -60,7 +60,8 @@ export const getSellPoint = (price, amount, profit, courtage) => {
  * @param {number} currency - Currency to update to.
  * @returns {number} - Profits in base currency.
  */
-export const getProfitBaseCurrency = (profit, currency) => (profit * currency).toFixed(2);
+export const getProfitBaseCurrency = (profit, currency) =>
+  parseFloat((profit * currency).toFixed(2));
 
 /**
  * Returns sum of an array of numbers.

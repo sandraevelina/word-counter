@@ -14,7 +14,7 @@ import {
 
 const Home = () => {
   const [price, setPrice] = useState(10);
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState(10);
   const [profit, setProfit] = useState(100);
   const [currency, setCurrency] = useState(8.86);
   const [usMarket, setUSMarket] = useState(false);
