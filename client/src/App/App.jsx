@@ -1,34 +1,66 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { StockCounterContext, stockCounterSettings } from '../contexts/stock-counter-context';
 import './App.css';
 import Header from '../components/BaseComponents/Header/Header';
 import Menu from '../components/BaseComponents/Menu/Menu';
 import Home from '../Pages/Home/Home';
 
-const App = () => {
-  const [navOpen, setNavOpen] = useState(true);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: {
+        minCourtage: stockCounterSettings.minCourtage,
+        percentageCourtage: stockCounterSettings.percentageCourtage,
+        currencyCourtage: stockCounterSettings.currencyCourtage,
+        baseCurrency: stockCounterSettings.baseCurrency,
+        currencyExchange: stockCounterSettings.currencyExchange,
+      },
+      navOpen: true,
+    };
 
-  useEffect(() => {
-    console.log(navOpen);
-  }, [navOpen]);
+    this.setCurrencyExchange = (currencyExchange) => {
+      this.setState((prevState) => ({
+        value: {
+          ...prevState.value,
+          currencyExchange,
+        },
+      }));
+    };
 
-  return (
-    <Router>
-      <div className="App">
-        <Header openNav={() => setNavOpen(!navOpen)} />
-        <div className="dashboard">
-          <Menu navOpen={navOpen} />
-          <main>
-            <Switch>
-              <Route path="/home" exact>
-                <Home />
-              </Route>
-            </Switch>
-          </main>
+    this.setNavOpen = this.setNavOpen.bind(this);
+  }
+
+  setNavOpen() {
+    this.setState((prevState) => ({
+      navOpen: !prevState.mavOpen,
+    }));
+  }
+
+  render() {
+    const { navOpen, value } = this.state;
+
+    return (
+      <Router>
+        <div className="App">
+          <Header openNav={() => this.setNavOpen} />
+          <div className="dashboard">
+            <Menu navOpen={navOpen} />
+            <main>
+              <StockCounterContext.Provider value={value}>
+                <Switch>
+                  <Route path="/home" exact>
+                    <Home />
+                  </Route>
+                </Switch>
+              </StockCounterContext.Provider>
+            </main>
+          </div>
         </div>
-      </div>
-    </Router>
-  );
-};
+      </Router>
+    );
+  }
+}
 
 export default App;

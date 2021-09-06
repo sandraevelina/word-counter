@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { StockCounterContext } from '../../contexts/stock-counter-context';
 import Box from '../../components/BaseComponents/Box/Box';
 import NumberInput from '../../components/BaseComponents/Input/NumberInput';
 import Switch from '../../components/BaseComponents/Switch/Switch';
@@ -87,13 +88,18 @@ const Home = () => {
         handleChange={(value) => setSellAt(value)}
       />
       {usMarket && (
-        <NumberInput
-          identifier="currency"
-          label="Currency exchange"
-          value={currency}
-          handleChange={(value) => setCurrency(value)}
-        />
+        <StockCounterContext.Consumer>
+          {({ currencyExchange, setCurrencyExchange }) => (
+            <NumberInput
+              identifier="currency"
+              label="Currency exchange"
+              value={currencyExchange}
+              handleChange={(value) => setCurrencyExchange(value)}
+            />
+          )}
+        </StockCounterContext.Consumer>
       )}
+
       {usMarket && (
         <NumberInput
           identifier="profit-sek"
