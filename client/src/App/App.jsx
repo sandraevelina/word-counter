@@ -11,25 +11,34 @@ class App extends React.Component {
     super(props);
     this.state = {
       value: {
-        minCourtage: stockCounterSettings.minCourtage,
-        percentageCourtage: stockCounterSettings.percentageCourtage,
-        currencyCourtage: stockCounterSettings.currencyCourtage,
-        baseCurrency: stockCounterSettings.baseCurrency,
-        currencyExchange: stockCounterSettings.currencyExchange,
+        settings: stockCounterSettings,
       },
       navOpen: true,
     };
 
-    this.setCurrencyExchange = (currencyExchange) => {
-      this.setState((prevState) => ({
-        value: {
-          ...prevState.value,
+    this.setNavOpen = this.setNavOpen.bind(this);
+    this.setCurrencyExchange = this.setCurrencyExchange.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState((prevState) => ({
+      value: {
+        ...prevState.value,
+        setCurrencyExchange: this.setCurrencyExchange,
+      },
+    }));
+  }
+
+  setCurrencyExchange(currencyExchange) {
+    this.setState((prevState) => ({
+      value: {
+        ...prevState.value,
+        settings: {
+          ...prevState.value.settings,
           currencyExchange,
         },
-      }));
-    };
-
-    this.setNavOpen = this.setNavOpen.bind(this);
+      },
+    }));
   }
 
   setNavOpen() {

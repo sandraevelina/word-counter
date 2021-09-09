@@ -17,7 +17,7 @@ const Home = () => {
   const [price, setPrice] = useState(10);
   const [amount, setAmount] = useState(10);
   const [profit, setProfit] = useState(100);
-  const [currency, setCurrency] = useState(8.86);
+  const currency = 8.86;
   const [usMarket, setUSMarket] = useState(false);
   const [courtage, setCourtage] = useState(0);
   const [currencyCourtage, setCurencyCourtage] = useState(0);
@@ -89,11 +89,11 @@ const Home = () => {
       />
       {usMarket && (
         <StockCounterContext.Consumer>
-          {({ currencyExchange, setCurrencyExchange }) => (
+          {({ settings, setCurrencyExchange }) => (
             <NumberInput
               identifier="currency"
               label="Currency exchange"
-              value={currencyExchange}
+              value={settings.currencyExchange}
               handleChange={(value) => setCurrencyExchange(value)}
             />
           )}
