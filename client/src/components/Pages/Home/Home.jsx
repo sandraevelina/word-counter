@@ -21,19 +21,18 @@ const Home = () => {
   const [currencyCourtage, setCurencyCourtage] = useState(0);
   const [sellAt, setSellAt] = useState(0);
   const [profitSEK, setProfitSEK] = useState(0);
-  let currency = getCurrency();
+  const [currency, setTempCurrency] = useState(getCurrency());
 
   useEffect(() => {
-    console.warn(buyAt);
     setCourtage(getCourtage(buyAt, sellAt, amount));
     setCurencyCourtage(getUSDCurrencyCourtage(buyAt, sellAt, amount));
     setSellAt(getSellPoint({ buyAt, amount, profit, externalMarket, courtage, currencyCourtage }));
     setProfitSEK(getProfitBaseCurrency(profit));
   }, [buyAt, amount, profit]);
 
-  const updateCurrencyExchange = () => {
-    currency = getCurrency();
-  };
+  useEffect(() => {
+    setProfitSEK(getProfitBaseCurrency(profit));
+  }, [currency]);
 
   return (
     <Box label="Check profit">
@@ -79,7 +78,7 @@ const Home = () => {
           value={currency}
           handleChange={(value) => {
             setCurrency(value);
-            updateCurrencyExchange();
+            setTempCurrency(value);
           }}
         />
       )}

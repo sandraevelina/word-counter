@@ -77,7 +77,6 @@ export const getSellPoint = ({
   const newcurrencyCourtage = getUSDCurrencyCourtage(buyAt, initialSellPrice, amount);
 
   totCourtage = getTotalCourtage(externalMarket, newCourtage, newcurrencyCourtage);
-  console.warn(totCourtage);
 
   return getSellPrice(totalBuyPrice, profit, totCourtage, amount);
 };
