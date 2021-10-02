@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { StockCounterContext, stockCounterSettings } from '../contexts/stock-counter-context';
+import { StockCounterContext, stockCounterSettings } from '../../contexts/stock-counter-context';
 import './App.css';
-import Header from '../components/BaseComponents/Header/Header';
-import Menu from '../components/BaseComponents/Menu/Menu';
+import Header from '../BaseComponents/Header/Header';
+import Menu from '../BaseComponents/Menu/Menu';
 import Home from '../Pages/Home/Home';
 
 class App extends React.Component {
