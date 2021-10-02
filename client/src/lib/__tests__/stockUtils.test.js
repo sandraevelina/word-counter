@@ -1,8 +1,4 @@
-import { getCourtage, getTotalPrice } from './utils';
-
-test('checks total price', () => {
-  expect(getTotalPrice(2, 2)).toBe(4);
-});
+import { getCourtage } from '../stockUtils';
 
 test('checks courtage', () => {
   expect(getCourtage(10, 20)).toBe(1);
