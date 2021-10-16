@@ -2,10 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Input.css';
 
-const NumberInput = ({ identifier, label, value, handleChange, step, min, max, readOnly }) => (
+const NumberInput = ({
+  identifier,
+  label,
+  value,
+  handleChange,
+  step,
+  min,
+  max,
+  readOnly,
+  secondary,
+}) => (
   <label htmlFor={identifier}>
     {label}
     <input
+      className={`${secondary ? 'secondary' : ''}`}
       type="number"
       value={value}
       id={identifier}
@@ -26,6 +37,7 @@ NumberInput.propTypes = {
   step: PropTypes.string,
   min: PropTypes.string,
   max: PropTypes.string,
+  secondary: PropTypes.bool,
   readOnly: PropTypes.bool,
 };
 
@@ -34,6 +46,7 @@ NumberInput.defaultProps = {
   min: 'any',
   max: 'any',
   readOnly: false,
+  secondary: false,
   handleChange: () => {},
 };
 

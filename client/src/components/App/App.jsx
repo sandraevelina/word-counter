@@ -4,6 +4,7 @@ import { StockCounterContext, stockCounterSettings } from '../../contexts/stock-
 import './App.css';
 import Header from '../BaseComponents/Header/Header';
 import Menu from '../BaseComponents/Menu/Menu';
+import UserPanel from '../Panels/UserPanel/UserPanel';
 import Home from '../Pages/Home/Home';
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
         settings: stockCounterSettings,
       },
       navOpen: true,
+      panelOpen: false,
     };
 
     this.setNavOpen = this.setNavOpen.bind(this);
@@ -43,19 +45,26 @@ class App extends React.Component {
 
   setNavOpen() {
     this.setState((prevState) => ({
-      navOpen: !prevState.mavOpen,
+      navOpen: !prevState.navOpen,
+    }));
+  }
+
+  setPanelOpen() {
+    this.setState((prevState) => ({
+      panelOpen: !prevState.panelOpen,
     }));
   }
 
   render() {
-    const { navOpen, value } = this.state;
+    const { navOpen, value, panelOpen } = this.state;
 
     return (
       <Router>
         <div className="App">
-          <Header openNav={() => this.setNavOpen} />
+          <Header openNav={() => this.setNavOpen()} openPanel={() => this.setPanelOpen()} />
           <div className="dashboard">
             <Menu navOpen={navOpen} />
+            <UserPanel panelOpen={panelOpen} closePanel={() => this.setPanelOpen()} />
             <main>
               <StockCounterContext.Provider value={value}>
                 <Switch>
