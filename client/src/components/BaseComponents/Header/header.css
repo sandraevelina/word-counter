@@ -1,10 +1,11 @@
 .header {
-  width: calc(100vw - var(--space-m));
+  width: calc(100vw - var(--space-m) - var(--space-m));
   height: var(--space-xxl);
   background: var(--primary-variant);
   color: var(--on-primary);
-  padding-left: var(--space-m);
+  padding: 0 var(--space-m);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }

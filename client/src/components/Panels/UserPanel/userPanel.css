@@ -1,0 +1,34 @@
+.panel {
+  width: 300px;
+  position: absolute;
+  height: calc(100vh - var(--space-xxl));
+  display: flex;
+  flex-direction: column;
+  background: var(--primary-variant);
+  color: var(--on-primary);
+  overflow: hidden;
+  transition: all 1s;
+  right: 0;
+}
+
+.panel.hidden {
+  transform: translateX(300px);
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-m);
+  font-size: var(--font-h4);
+}
+
+.panel-body {
+  padding: var(--space-m);
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-body > * {
+  margin-bottom: var(--space-l);
+}
