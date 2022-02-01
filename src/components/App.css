@@ -1,0 +1,28 @@
+.app {
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+}
+
+.inputter {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.analyser {
+  padding: 16px;
+  height: 100%;
+}
