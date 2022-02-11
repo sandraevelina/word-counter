@@ -29,7 +29,8 @@
         "tryExtensions": [".js", ".jsx", ".json", ".node"]
       }
     ],
-    "no-console": "off"
+    "no-console": "off",
+    "no-param-reassign": ["error", { "props": false }]
   },
   "settings": {
     "jest": {

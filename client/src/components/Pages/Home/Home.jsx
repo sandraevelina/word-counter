@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrencyExchange } from '../../../redux/courtage/courtageSettingSlice';
 import Box from '../../BaseComponents/Box/Box';
 import NumberInput from '../../BaseComponents/Input/NumberInput';
 import Switch from '../../BaseComponents/Switch/Switch';
@@ -8,7 +10,6 @@ import {
   getProfitBaseCurrency,
   getSellPoint,
   getUSDCurrencyCourtage,
-  getCurrency,
   setCurrency,
 } from '../../../lib/stockUtils';
 
@@ -21,7 +22,8 @@ const Home = () => {
   const [currencyCourtage, setCurencyCourtage] = useState(0);
   const [sellAt, setSellAt] = useState(0);
   const [profitSEK, setProfitSEK] = useState(0);
-  const [currency, setTempCurrency] = useState(getCurrency());
+  const currency = useSelector((state) => state.courtageSettings.currencyExchange);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setCourtage(getCourtage(buyAt, sellAt, amount));
@@ -78,7 +80,7 @@ const Home = () => {
           value={currency}
           handleChange={(value) => {
             setCurrency(value);
-            setTempCurrency(value);
+            dispatch(setCurrencyExchange(value));
           }}
         />
       )}
